@@ -4,10 +4,10 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      renderBall: false,
       time: 0,
       x: 0,
       y: 0,
-      renderBall: false,
       ballPosition: {
         left: "0px",
         top: "0px"
@@ -17,7 +17,6 @@ class Timer extends React.Component {
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
     this.handleKey = this.handleKey.bind(this);
   }
-
   buttonClickHandler() {
     this.setState({ renderBall: true });
     document.addEventListener("keydown", this.handleKey);
@@ -31,7 +30,8 @@ class Timer extends React.Component {
       <div>
         <div className="ball" style={this.state.ballPosition}></div>
         <div className="hole"></div>
-        <div className="header-timer">{this.state.time}</div>
+        <div className="heading-timer">{this.state.time}</div>
+
         <button
           className="start ballProvider"
           onClick={this.buttonClickHandler}
@@ -43,8 +43,6 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {}
-
-  componentWillUnmount() {}
 
   componentDidUpdate() {
     if (this.state.x === 250 && this.state.y === 250) {
